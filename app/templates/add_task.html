@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div style="text-align:center">
+
+    <h1>Add Task</h1>
+
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.mission.label }}<br>
+                {{ form.mission(cols=50, rows=4) }}<br>
+                {% for error in form.mission.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>
+
+                {{ form.date_start.label }}  &nbsp &nbsp &nbsp {{ form.date_the_end.label }}<br>
+                {{ form.date_start(size=10) }}  &nbsp &#8212 &nbsp {{ form.date_the_end(size=10) }}<br>
+                {% for error in form.date_the_end.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+                {% for error in form.date_start.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>{{ form.submit() }}</p>
+        </form>
+    </div>
+    <span style="color: gray;">* This field is required.</span>
+{% endblock %}

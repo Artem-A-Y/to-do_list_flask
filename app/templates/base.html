@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>To Do</title>
+    {% endif %}
+
+    <link type="text/css" href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+    <link type="text/css" href="{{ url_for('static', filename='css/button-registration.css') }}" rel="stylesheet">
+
+    <link type="text/css" href="{{ url_for('static', filename='css/fieldset.css') }}" rel="stylesheet">
+
+    <link type="text/css" href="{{ url_for('static', filename='css/background.css') }}" rel="stylesheet">
+
+    <link type="text/css" href="{{ url_for('static', filename='css/table.css') }}" rel="stylesheet">
+
+</head>
+<body>
+    <hr>
+    <div class="top_nav">
+
+        <a href="{{ url_for('index') }}">To Do list application</a>
+
+        <div class="top_nav-centered">
+            {% if current_user.username %}
+                <a href="{{ url_for('to_do_list', username=current_user.username) }}">To Do list</a>
+            {% else %}
+                <a href="{{ url_for('to_do_list') }}">To Do list</a>
+            {% endif %}
+        </div>
+
+        {% if current_user.is_anonymous %}
+            <div class="top_nav-right">
+                <a href="{{ url_for('login') }}">Sign In</a>
+                <a href="{{ url_for('reg') }}">Register</a>
+            </div>
+        {% else %}
+            <div class="top_nav-right">
+                <a href="{{ url_for('logout') }}">Logout</a>
+            </div>
+            <div class="top_nav-centered">
+                <a href="{{ url_for('add_to_do_list', username=current_user.username) }}">Add To Do list</a>
+            </div>
+        {% endif %}
+
+    </div>
+    <hr>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
