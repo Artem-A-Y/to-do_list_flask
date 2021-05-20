@@ -1,27 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-
     <h1>Hi, {{ user.username }}!</h1>
-
      <div style="text-align:center">
      {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        <span style="color: green;">{{ messages[0] }}</span>
-                    {% endif %}
+         {% if messages %}
+             <span style="color: green;">{{ messages[0] }}</span>
+         {% endif %}
      {% endwith %}
      </div>
-
     {% if post %}
         <form action="{{ url_for('to_do_list', username=current_user.username) }}" method="post">
-        <table class="table_col" width="100%">
-            <colgroup>
-                 <col style="background: #2a3038;">
-            </colgroup>
+        <table class="table_dark" width="100%">
             <tr>
                 <th>Must do (должен выполнить)</th>
                 <th>Date start</th>
-                 <th>Date the end </th>
+                <th>Date the end </th>
             </tr>
 
             {% for pos in post %}
@@ -38,14 +32,13 @@
         <div style="text-align:center">
             <span style="color: red;">To Do list empty*</span>
         </div>
-        <table width="100%">
-             <tr>
+        <table class="table_dark" width="100%">
+            <tr>
                 <th>Must do (должен выполнить)</th>
                 <th>Date start</th>
-                 <th>Date the end </th>
+                <th>Date the end</th>
             </tr>
         </table>
-
     {% endif %}
 
 {% endblock %}

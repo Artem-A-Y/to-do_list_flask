@@ -85,7 +85,6 @@ def add_to_do_list(username):
         current_user.date_start = form.date_start.data
         current_user.date_the_end = form.date_the_end.data
         u = User.query.filter_by(username=username).first_or_404()
-        print(type(current_user.date_start), type(current_user.date_the_end))
         p = Post(mission=current_user.mission,
                  author=u,
                  timestamp_start=current_user.date_start,

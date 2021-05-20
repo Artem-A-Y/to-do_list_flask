@@ -3,9 +3,7 @@
 {% block content %}
 
         <div style="text-align:center">
-
             <h2>Log in to the To Do list</h2>
-
             <fieldset>
                 <form action="" method="post" novalidate>
                     {{ form.hidden_tag() }}
@@ -26,7 +24,6 @@
                      <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
                      <p>{{ form.submit() }}</p>
                 </form>
-
                 {% with messages = get_flashed_messages() %}
                     {% if messages %}
                         {% for message in messages %}
@@ -34,9 +31,7 @@
                         {% endfor %}
                     {% endif %}
                 {% endwith %}
-
             </fieldset>
-
        </div>
         <span style="color: gray;">* This field is required.</span>
 {% endblock %}
